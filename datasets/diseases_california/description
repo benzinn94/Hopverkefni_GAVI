@@ -1,0 +1,16 @@
+Context
+
+Vaccinations provide people the ability to develop immunity to particular diseases. When the majority of a population is vaccinated, “herd immunity” protects those who have not been vaccinated by blocking the spread of these diseases. A medical research paper published by The Lancet in 1998 suggested an association between the Measles/Mumps/Rubella (MMR) vaccine and Autism spectrum disorders. The paper was later fully-retracted due controversy surrounding the lead author, who had financial conflicts of interest and allegedly manipulated the study data. However, it generated worldwide concern over the safety of MMR and other types of vaccines, including Diphtheria/Tetanus/Pertussis (DTP).
+
+In California by 2010, the growing trend for parents to opt out of having their children receive vaccines over the following decade coincided with the largest Pertussis outbreak in more than 60 years. Reduced vaccination frequency was also linked to a high-profile measles outbreak in 2014 that began at Disneyland. The resulting California state legislation (Senate Bill 277), signed June 2015, made it much more difficult for parents to opt out of vaccinations for their children. The data set will allow you to explore individual public and private school vaccination rates of incoming Kindergarten students for the 2000 to 2014 school years.
+
+Content
+
+The data are records for every school with ten or more students reporting the number of incoming Kindergarteners who provided either proof of immunization, personal beliefs exemption (PBE), or permanent medical exemption (PME). Annual records for the 2000-2001 through 2014-2015 school years have been formatted and combined. Common variables in these annual data sets included in the merged file are the number of students, school name, school county, the number of PBEs, PMEs, and number of students vaccinated for:
+
+Diphtheria/Tetanus/Pertussis (DTP)
+Polio
+Measles/Mumps/Rubella (MMR)
+One additional file contains 5 years of county-level Pertussis case numbers and rates. Another additional data file contains the number of infant Pertussis cases for infants under three months old for each county in California between 2014-2015.
+
+Geographic data are available in a file based on scripted geocode calls using the ggmap R package to find latitude and longitude data using the school names and county names. Not all calls returned a valid coordinate, so additional indicator variables in this file indicate the quality of the match. The isSchool indicator variable is 1 if the geocode search meta data included "school" and the countyMatch indicator is 1 if the latitude and longitude coordinates are contained within the appropriate county in CA.
