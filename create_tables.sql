@@ -38,3 +38,11 @@ create table vaccination_rate (
 	school_year_vaccinated int,
 	primary key(id)
 );
+
+create table pertussis_rate(
+	year int,
+	county_name varchar(250) references counties(county_name),
+	cases int,
+	rate real,
+	primary key(county_name, year)
+); 

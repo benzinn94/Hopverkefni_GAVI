@@ -4,15 +4,19 @@ f1 = open('datasets/election_results/2016_results_county.csv')
 f2 = open('datasets/diseases_california/pertusisRates2010_2015.csv')
 f3 = open('datasets/diseases_california/StudentData.csv')
 f4 = open('datasets/county_statistics.csv')
+f5 = open('datasets/diseases_california/pertusisRates2010_2015.csv')
 dread1 = csv.DictReader(f1)
 dread2 = csv.DictReader(f2)
 dread3 = csv.DictReader(f3)
 dread4 = csv.DictReader(f4)
+dread5 = csv.DictReader(f5)
+
 
 data1 = []
 data2 = []
 data3 = []
 data4 = []
+data5 = []
 
 for i in dread1:
 	data1.append(i)
@@ -22,11 +26,14 @@ for i in dread3:
 	data3.append(i)
 for i in dread4:
 	data4.append(i)
+for i in dread5:
+	data5.append(i)
 
 f1.close()
 f2.close()
 f3.close()
 f4.close()
+f5.close()
 
 
 for i in data3:
@@ -74,3 +81,16 @@ f = open('insertcommands5.sql', 'w')
 for i in data4:
 	f.write('''insert into county_stats(county_name, population, population_density, per_capita_income, med_household_income) values('{}', {}, {}, {}, {});\n '''.format(i['county'].upper(), i['population'], i['population_density'], i['per_capita_income'], i['median_household_income']))
 f.close()
+
+f = open('insertcommands6.sql', 'w')
+
+
+for i in data5:
+	f.write("Insert into pertussis_rate(year, county_name, cases, rate) values(2010, '{}', {}, {});\n".format(i['county'], i['Cases2010'], i['Rate2010']))
+	f.write("Insert into pertussis_rate(year, county_name, cases, rate) values(2011, '{}', {}, {});\n".format(i['county'], i['Cases2011'], i['Rate2011']))
+	f.write("Insert into pertussis_rate(year, county_name, cases, rate) values(2012, '{}', {}, {});\n".format(i['county'], i['Cases2012'], i['Rate2012']))
+	f.write("Insert into pertussis_rate(year, county_name, cases, rate) values(2013, '{}', {}, {});\n".format(i['county'], i['Cases2013'], i['Rate2013']))
+	f.write("Insert into pertussis_rate(year, county_name, cases, rate) values(2014, '{}', {}, {});\n".format(i['county'], i['Cases2014'], i['Rate2014']))
+
+f.close()
+	
