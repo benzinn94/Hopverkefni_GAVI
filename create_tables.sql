@@ -1,25 +1,26 @@
 create table counties (
-	county varchar(250),
-	primary key(county)
+	county_name varchar(250),
+	primary key(county_name)
 );
 
 create table election_results (
 	id serial,
-	county_name varchar(250) references counties(county),
+	county_name varchar(250) references counties(county_name),
 	votes_hillary int,
 	votes_trump int,
 	primary key(id)
 );
 
 create table schools (
-	county_name varchar(250) references counties(county),
+	id serial,
+	county_name varchar(250) references counties(county_name),
 	school_name varchar(250),
 	school_type varchar(250),
-	primary key(school_name)
+	primary key(id, school_name)
 );
 
 create table county_stats (
-	county_name varchar(250) references counties(county),
+	county_name varchar(250) references counties(county_name),
 	population int,
 	population_density real,
 	per_capita_income int,
@@ -30,7 +31,10 @@ create table county_stats (
 create table vaccination_rate (
 	id serial,
 	year int,
+	school_id varchar(250) references schools(id)
 	school_name varchar(250) references schools(school_name),
-	vacc_rate_pertussis real,
+	county_name varchar(250) references counties(county_name),
+	school_year_total int,
+	school_year_vaccinated int,
 	primary key(id)
 );
