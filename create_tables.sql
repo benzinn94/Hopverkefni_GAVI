@@ -31,7 +31,6 @@ create table county_stats (
 create table vaccination_rate (
 	id serial,
 	year int,
-	school_id varchar(250) references schools(id)
 	school_name varchar(250) references schools(school_name),
 	county_name varchar(250) references counties(county_name),
 	school_year_total int,
